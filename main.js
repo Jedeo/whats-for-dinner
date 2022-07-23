@@ -97,7 +97,6 @@ function makeInnerHtml() {
 
   addRecipeSection.classList.add('hidden');
 
-
   jsElements.innerHTML = ``
   if (dishRecipes === null) {
     alert("Please Select An Option")
@@ -130,7 +129,6 @@ function makeInnerHtml() {
     potButton.classList.remove('hidden');
   }
 }
-
 
 //adding new recipe
 function addRicipe() {
@@ -166,5 +164,4 @@ function addRicipe() {
     potButton.classList.remove('hidden');
     addRecipeSection.classList.toggle('hidden');
   }
-
 }
