@@ -143,13 +143,27 @@ function addRicipe() {
     alert(`That category ${typeOfRecipe} does not exist `)
   } else if (typeOfRecipe.toLowerCase() === "side" && nameOfRecipe !== '') {
     sides.push(nameOfRecipe);
+    potImg.classList.add('hidden');
+    jsElements.innerHTML += `
+      <h1> You should cook: </h1>
+      <h3 class="js-h1"> ${sides[sides.length-1]} </h3>`;
+    potButton.classList.remove('hidden');
     addRecipeSection.classList.toggle('hidden');
-    console.log(sides);
   } else if (typeOfRecipe.toLowerCase() === "desert" && nameOfRecipe !== '') {
     desserts.push(nameOfRecipe);
+    potImg.classList.add('hidden');
+    jsElements.innerHTML += `
+      <h1> You should cook: </h1>
+      <h3 class="js-h1"> ${desserts[desserts.length-1]} </h3>`;
+    potButton.classList.remove('hidden');
     addRecipeSection.classList.toggle('hidden');
   } else if (typeOfRecipe.toLowerCase() === "main dish" && nameOfRecipe !== '') {
     mains.push(nameOfRecipe);
+    potImg.classList.add('hidden');
+    jsElements.innerHTML += `
+      <h1> You should cook: </h1>
+      <h3 class="js-h1"> ${mains[mains.length-1]} </h3>`;
+    potButton.classList.remove('hidden');
     addRecipeSection.classList.toggle('hidden');
   }
 
