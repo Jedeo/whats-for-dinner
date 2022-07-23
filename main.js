@@ -130,3 +130,27 @@ function makeInnerHtml() {
     potButton.classList.remove('hidden');
   }
 }
+
+
+//adding new recipe
+function addRicipe() {
+  var typeOfRecipe = document.querySelector('input[name="add-type"]').value
+  var nameOfRecipe = document.querySelector('input[name="add-name"]').value
+
+  if(typeOfRecipe === '' || nameOfRecipe === ''){
+     alert(`😅 Oops looks like you have not filled all the blanks😅`)
+  } else if(typeOfRecipe.toLowerCase() !== "side" && typeOfRecipe.toLowerCase() !== "Desert" && typeOfRecipe.toLowerCase() !== "main dish" ){
+     alert(`That category ${typeOfRecipe} does not exist `)
+  }else if (typeOfRecipe.toLowerCase() === "side" && nameOfRecipe !== '' ) {
+    sides.push(nameOfRecipe);
+    addRecipeSection.classList.toggle('hidden');
+    console.log(sides);
+  } else if (typeOfRecipe.toLowerCase() === "desert" && nameOfRecipe !== '') {
+    desserts.push(nameOfRecipe);
+    addRecipeSection.classList.toggle('hidden');
+  } else if (typeOfRecipe.toLowerCase() === "main dish" && nameOfRecipe !== '') {
+    mains.push(nameOfRecipe);
+    addRecipeSection.classList.toggle('hidden');
+  }
+
+}
