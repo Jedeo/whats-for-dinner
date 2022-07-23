@@ -47,23 +47,31 @@ var desserts = [
   'Croissants',
   'Eclairs'
 ];
+var potImg = document.querySelector('.pot-img');
+var botton = document.querySelector('#cook-button');
+var clearButton = document.querySelector('#clear-button');
+var jsElements = document.querySelector('.js-element');
+var potButton = document.querySelector('.pot-button ');
+var headerButton = document.querySelector('#header-button');
+var addRecipe = document.querySelector('#add-recipe');
+var addRecipeSection = document.querySelector('.addRecipeSection');
+var addRecipeButton = document.querySelector('.add-button');
+
+botton.addEventListener('click', handleClick);
+clearButton.addEventListener('click', innerHTMLClear);
+headerButton.addEventListener('click', showForm);
+addRecipeButton.addEventListener('click', addRicipe)
+
 
 //random number function
 function getRedomNumber(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-var potContent = document.querySelector('.cookpot-section');
-var potImg = document.querySelector('.pot-img');
-var botton = document.querySelector('#cook-button');
-var clearButton = document.querySelector('#clear-button')
-var jsElements = document.querySelector('.js-element');
-var potButton = document.querySelector('.pot-button ')
-
-
-botton.addEventListener('click', handleClick);
-clearButton.addEventListener('click', innerHTMLClear);
-
+function showForm() {
+  addRecipeSection.scrollIntoView(false);
+  addRecipeSection.classList.toggle('hidden');
+}
 
 function handleClick() {
   makeInnerHtml();
@@ -73,10 +81,12 @@ function innerHTMLClear() {
   //getting random number for all arrays
   potButton.classList.add('hidden');
   potImg.classList.remove('hidden');
+
   jsElements.innerHTML = ``;
 
 }
 
+//showing random recipe
 function makeInnerHtml() {
   var sidesRandomNumber = getRedomNumber(sides);
   var mainsRandomNumber = getRedomNumber(mains);
@@ -84,6 +94,10 @@ function makeInnerHtml() {
 
   var dishRecipes = document.querySelector('input[name="dish-item"]:checked');
   var clearForm = document.querySelector('#radio-form').reset();
+
+  addRecipeSection.classList.add('hidden');
+
+
   jsElements.innerHTML = ``
   if (dishRecipes === null) {
     alert("Please Select An Option")
@@ -92,6 +106,7 @@ function makeInnerHtml() {
   } else if (dishRecipes.value === 'Side') {
     potImg.classList.add('hidden');
     potButton.classList.remove('hidden');
+    console.log(sides);
     jsElements.innerHTML += `
       <h1> You should cook: </h1>
       <h3 class="js-h1"> ${sides[sidesRandomNumber]} </h3>`;
