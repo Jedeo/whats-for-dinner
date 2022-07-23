@@ -97,7 +97,6 @@ function makeInnerHtml() {
 
   addRecipeSection.classList.add('hidden');
 
-
   jsElements.innerHTML = ``
   if (dishRecipes === null) {
     alert("Please Select An Option")
@@ -131,26 +130,38 @@ function makeInnerHtml() {
   }
 }
 
-
 //adding new recipe
 function addRicipe() {
   var typeOfRecipe = document.querySelector('input[name="add-type"]').value
   var nameOfRecipe = document.querySelector('input[name="add-name"]').value
 
-  if(typeOfRecipe === '' || nameOfRecipe === ''){
-     alert(`😅 Oops looks like you have not filled all the blanks😅`)
-  } else if(typeOfRecipe.toLowerCase() !== "side" && typeOfRecipe.toLowerCase() !== "Desert" && typeOfRecipe.toLowerCase() !== "main dish" ){
-     alert(`That category ${typeOfRecipe} does not exist `)
-  }else if (typeOfRecipe.toLowerCase() === "side" && nameOfRecipe !== '' ) {
+  if (typeOfRecipe === '' || nameOfRecipe === '') {
+    alert(`😅 Oops looks like you have not filled all the blanks😅`)
+  } else if (typeOfRecipe.toLowerCase() !== "side" && typeOfRecipe.toLowerCase() !== "Desert" && typeOfRecipe.toLowerCase() !== "main dish") {
+    alert(`That category ${typeOfRecipe} does not exist `)
+  } else if (typeOfRecipe.toLowerCase() === "side" && nameOfRecipe !== '') {
     sides.push(nameOfRecipe);
+    potImg.classList.add('hidden');
+    jsElements.innerHTML += `
+      <h1> You should cook: </h1>
+      <h3 class="js-h1"> ${sides[sides.length-1]} </h3>`;
+    potButton.classList.remove('hidden');
     addRecipeSection.classList.toggle('hidden');
-    console.log(sides);
   } else if (typeOfRecipe.toLowerCase() === "desert" && nameOfRecipe !== '') {
     desserts.push(nameOfRecipe);
+    potImg.classList.add('hidden');
+    jsElements.innerHTML += `
+      <h1> You should cook: </h1>
+      <h3 class="js-h1"> ${desserts[desserts.length-1]} </h3>`;
+    potButton.classList.remove('hidden');
     addRecipeSection.classList.toggle('hidden');
   } else if (typeOfRecipe.toLowerCase() === "main dish" && nameOfRecipe !== '') {
     mains.push(nameOfRecipe);
+    potImg.classList.add('hidden');
+    jsElements.innerHTML += `
+      <h1> You should cook: </h1>
+      <h3 class="js-h1"> ${mains[mains.length-1]} </h3>`;
+    potButton.classList.remove('hidden');
     addRecipeSection.classList.toggle('hidden');
   }
-
 }
