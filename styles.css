@@ -54,7 +54,9 @@ body {
   margin-top: 8%;
   margin-bottom: 5%
 }
-
+span {
+  color: red;
+}
 /*menu section*/
 .recipes-section {
   background: rgba(225, 225, 225, .9);
